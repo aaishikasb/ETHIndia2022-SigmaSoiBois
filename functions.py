@@ -1,6 +1,7 @@
 from urlgen import make_api_url
 from requests import get, post 
 from credentials import keys
+from credentials import header
 
 def execute_query(query_id):
     """
@@ -10,7 +11,7 @@ def execute_query(query_id):
     """
 
     url = make_api_url("query", "execute", query_id)
-    response = post(url, headers=HEADER)
+    response = post(url, headers=header())
     execution_id = response.json()['execution_id']
 
     return execution_id
@@ -24,7 +25,7 @@ def get_query_status(execution_id):
     """
 
     url = make_api_url("execution", "status", execution_id)
-    response = get(url, headers=HEADER)
+    response = get(url, headers=header())
 
     return response
 
@@ -37,7 +38,7 @@ def get_query_results(execution_id):
     """
 
     url = make_api_url("execution", "results", execution_id)
-    response = get(url, headers=HEADER)
+    response = get(url, headers=header())
 
     return response
 
@@ -50,6 +51,6 @@ def cancel_query_execution(execution_id):
     """
 
     url = make_api_url("execution", "cancel", execution_id)
-    response = get(url, headers=HEADER)
+    response = get(url, headers=header())
 
     return response
