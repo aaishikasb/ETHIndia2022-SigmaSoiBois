@@ -1,3 +1,4 @@
+
 from urlgen import make_api_url
 from requests import get, post 
 from credentials import keys
@@ -13,7 +14,7 @@ def execute_query(query_id):
     url = make_api_url("query", "execute", query_id)
     response = post(url, headers=header())
     execution_id = response.json()['execution_id']
-
+    print("Unique Execution number of the Query:")
     return execution_id
 
 
@@ -23,10 +24,10 @@ def get_query_status(execution_id):
     Fetches the status of query execution using the API
     Returns the status response object
     """
-
+    
     url = make_api_url("execution", "status", execution_id)
     response = get(url, headers=header())
-
+    print("Status of Execution:")
     return response
 
 
@@ -39,7 +40,7 @@ def get_query_results(execution_id):
 
     url = make_api_url("execution", "results", execution_id)
     response = get(url, headers=header())
-
+    print("Loading Query Results...")
     return response
 
 
@@ -52,5 +53,5 @@ def cancel_query_execution(execution_id):
 
     url = make_api_url("execution", "cancel", execution_id)
     response = get(url, headers=header())
-
+    print("Cancelling execution...")
     return response

@@ -5,6 +5,9 @@ import os
 from flask import Flask, redirect, render_template, request, url_for 
 import time 
 from urlgen import make_api_url
+from functions import execute_query, get_query_status, get_query_results, cancel_query_execution
+
+
 API_key = keys()
 
 Query_ID = "" 
