@@ -4,6 +4,7 @@ import { config as dotenvConfig } from "dotenv";
 
 import authRouter from "./auth/auth.routes";
 import polygonIDRouter from "./polygon-id/polygon-id.routes";
+import schemaRouter from "./schema/schema.routes";
 
 dotenvConfig();
 
@@ -19,6 +20,7 @@ app.use("/api/healthcheck", (req: Request, res: Response) => {
 
 app.use("/api/auth", authRouter);
 app.use("/api/polygon-id", polygonIDRouter);
+app.use("/api/schema", schemaRouter);
 
 app.use("*", (req: Request, res: Response) => {
   res.status(404).json({
@@ -32,6 +34,7 @@ app.use((err: Error | any, req: Request, res: Response, next: NextFunction) => {
     res.status(err.statusCode).json({
       success: false,
       message: err.message,
+      token: res.locals?.user?.token ?? undefined,
     });
   } else {
     console.error("UnhandledAPIError");

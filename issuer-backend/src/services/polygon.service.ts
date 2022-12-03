@@ -119,3 +119,36 @@ export const completeIssuerFlow = async (oldToken: string) => {
     };
   }
 };
+
+export const createSchema = async (
+  schema: string,
+  mandatoryExpiration: boolean,
+  attributes: any,
+  token: string,
+  issuerId: string
+) => {
+  try {
+    const { data } = await Axios.post(
+      `${baseUrl}/issuers/${issuerId}/schemas`,
+      {
+        schema: schema,
+        mandatoryExpiration: mandatoryExpiration,
+        attributes: attributes,
+      },
+      {
+        headers: {
+          Authorization: `Bearer ${token}`,
+        },
+      }
+    );
+    console.log("Schema created:");
+    console.dir(data);
+    return data?.id;
+  } catch (err) {
+    console.error(err);
+    throw {
+      statusCode: 500,
+      message: "Could not create schema!",
+    };
+  }
+};
