@@ -25,7 +25,7 @@ export default function Home() {
             <input className={styles.inputBox} type="text" id="role" name="role" /><br/>
             <label className={styles.label} for="num">Number of Contributions:</label><br/>
             <input className={styles.inputBox} type="text" id="num" name="num" /><br/>
-            <button className={styles.submit} type="submit">Claim Offer 🏆</button>
+            <button className={styles.submit} type="submit">Offer Claim 🏆</button>
         </form>
       </main>
 

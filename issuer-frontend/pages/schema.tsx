@@ -27,6 +27,7 @@ export default function Home() {
             <input className={styles.inputBox} type="text" id="atribs" name="atribs" /><br/>
             <button className={styles.submit} type="submit">Create Schema 📜</button>
         </form>
+        <label>View <a className={styles.link} href="/list">Past Schemas</a>.</label>
       </main>
 
       <footer className={styles.footer}>
