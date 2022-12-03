@@ -15,8 +15,8 @@ export default function Home() {
             <h1 className={styles.title}>
                 <span className={styles.polyGrad}>SigmaZK</span>
             </h1><br/><br/>
-            <button className={styles.submit2} type="submit">Create Schema 📜</button><br/><br/>
-            <button className={styles.submit2} type="submit">Offer Claim 🏆</button>
+            <a className={styles.buttonlink} href='/schema'><button className={styles.submit2} type="submit">Create Schema 📜</button></a><br/><br/>
+            <a className={styles.buttonlink} href='/claim'><button className={styles.submit2} type="submit">Offer Claim 🏆</button></a>
       </main>
 
       <footer className={styles.footer}>

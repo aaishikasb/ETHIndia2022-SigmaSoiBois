@@ -25,7 +25,7 @@ export default function Home() {
           3. Issuing a Claim for a Verifiable Credential to a user.<br />
           4. User Claims the verifiable credential!<br />
         </p>
-        <button className={styles.submit2} type="submit">Checkout now! 👀</button>
+        <a className={styles.buttonlink} href='/signin'><button className={styles.submit2} type="submit">Checkout now! 👀</button></a>
       </main>
 
       <footer className={styles.footer}>
