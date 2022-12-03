@@ -1,4 +1,5 @@
 import express, { Express, Request, Response, NextFunction } from "express";
+import cors from "cors";
 const app: Express = express();
 import { config as dotenvConfig } from "dotenv";
 
@@ -8,6 +9,7 @@ import schemaRouter from "./schema/schema.routes";
 
 dotenvConfig();
 
+app.use(cors())
 app.use(express.json({}));
 
 app.use("/api/healthcheck", (req: Request, res: Response) => {
