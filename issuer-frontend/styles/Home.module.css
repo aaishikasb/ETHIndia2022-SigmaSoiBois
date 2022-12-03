@@ -134,6 +134,7 @@
 
 .polyGrad {
   background: -webkit-linear-gradient(1800deg, #8247e5, #ee62b5);
+  background-clip: text;
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
 }
