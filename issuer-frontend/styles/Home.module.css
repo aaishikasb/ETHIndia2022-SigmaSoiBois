@@ -51,9 +51,10 @@
 }
 
 .description {
-  margin: 4rem 0;
+  margin: 1.5rem 0;
   line-height: 1.5;
   font-size: 1.5rem;
+  width: 40%;
 }
 
 .code {
