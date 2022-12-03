@@ -1,6 +1,7 @@
 import { Router, Request, Response, NextFunction } from "express";
 import { injectJWTInResponse } from "../middlewares/inject-jwt";
 import { validateJWT } from "../middlewares/validate-jwt";
+import { getAllSchemas, getIssuerID } from "../services/polygon.service";
 import { createSchemaService } from "./schema.service";
 
 const router = Router();
@@ -37,6 +38,13 @@ const handleGetList = async (
   next: NextFunction
 ) => {
   try {
+    const issuerId = getIssuerID(res.locals.user.token);
+    const data = await getAllSchemas(res.locals.user.token, issuerId);
+    res.setHeader("X-Refresh-Token", res.locals.user.token);
+    res.json({
+      success: true,
+      allSchemas: data,
+    });
   } catch (err) {
     next(err);
   }
@@ -48,6 +56,7 @@ const handlePostOffer = async (
   next: NextFunction
 ) => {
   try {
+    res.setHeader("X-Refresh-Token", res.locals.user.token);
   } catch (err) {
     next(err);
   }

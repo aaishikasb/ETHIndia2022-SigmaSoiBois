@@ -152,3 +152,18 @@ export const createSchema = async (
     };
   }
 };
+
+export const getIssuerID = (token: string) => {
+  const payload = decode(token, { json: true });
+  const issuerId = payload?.account?.organization;
+  return issuerId;
+};
+
+export const getAllSchemas = async (token: string, issuerId: string) => {
+  const { data } = await Axios.get(`${baseUrl}/issuers/${issuerId}/schemas`, {
+    headers: {
+      Authorization: `Bearer ${token}`,
+    },
+  });
+  return data;
+};

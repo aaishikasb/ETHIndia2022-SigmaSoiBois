@@ -1,5 +1,4 @@
-import { decode } from "jsonwebtoken";
-import { createSchema } from "../services/polygon.service";
+import { createSchema, getIssuerID } from "../services/polygon.service";
 
 export const createSchemaService = async (
   schema: string,
@@ -7,8 +6,7 @@ export const createSchemaService = async (
   attributes: any,
   token: string
 ) => {
-  const payload = decode(token, { json: true });
-  const issuerId = payload?.account?.organization;
+  const issuerId = getIssuerID(token);
   const schemaId = await createSchema(
     schema,
     mandatoryExpiration,
