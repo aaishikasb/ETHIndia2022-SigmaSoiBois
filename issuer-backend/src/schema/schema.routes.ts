@@ -1,8 +1,13 @@
 import { Router, Request, Response, NextFunction } from "express";
 import { injectJWTInResponse } from "../middlewares/inject-jwt";
 import { validateJWT } from "../middlewares/validate-jwt";
-import { getAllSchemas, getIssuerID } from "../services/polygon.service";
+import {
+  createClaimOffer,
+  getAllSchemas,
+  getIssuerID,
+} from "../services/polygon.service";
 import { createSchemaService } from "./schema.service";
+import {sendDeepLinkViaDiscord} from "../services/discord.service"
 
 const router = Router();
 
@@ -56,7 +61,22 @@ const handlePostOffer = async (
   next: NextFunction
 ) => {
   try {
+    const { discordId, attributes } = req.body;
+    const parsedAttributes = JSON.parse(attributes);
+    const { schemaId } = req.params;
+    const issuerId = getIssuerID(res.locals.user.token);
+    const qrData = await createClaimOffer(
+      issuerId,
+      schemaId,
+      parsedAttributes,
+      res.locals.user.token
+    );
+    await sendDeepLinkViaDiscord(discordId, qrData)
     res.setHeader("X-Refresh-Token", res.locals.user.token);
+    res.json({
+      success: true,
+      qrData: qrData,
+    });
   } catch (err) {
     next(err);
   }

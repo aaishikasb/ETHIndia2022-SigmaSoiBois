@@ -167,3 +167,38 @@ export const getAllSchemas = async (token: string, issuerId: string) => {
   });
   return data;
 };
+
+export const createClaimOffer = async (
+  issuerId: string,
+  schemaId: string,
+  attributes: any,
+  token: string
+) => {
+  try {
+    const { data } = await Axios.post(
+      `${baseUrl}/issuers/${issuerId}/schemas/${schemaId}/offers`,
+      {
+        attributes: attributes,
+      },
+      {
+        headers: {
+          Authorization: `Bearer ${token}`,
+        },
+      }
+    );
+    console.log("Claim created:");
+    console.dir(data);
+    const claimId = data?.id;
+    const { data: qrData } = await Axios.post(
+      `${baseUrl}/offers-qrcode/${claimId}`
+    );
+    console.log("QR code data:");
+    console.dir(qrData?.qrcode);
+    return qrData?.qrcode;
+  } catch (err) {
+    throw {
+      statusCode: 500,
+      message: "Cannot able to create claim!",
+    };
+  }
+};
