@@ -7,7 +7,10 @@ import {
   getIssuerID,
 } from "../services/polygon.service";
 import { createSchemaService } from "./schema.service";
-import {sendDeepLinkViaDiscord} from "../services/discord.service"
+import {
+  sendDeepLinkViaDiscord,
+  sendImageViaDiscord,
+} from "../services/discord.service";
 
 const router = Router();
 
@@ -65,17 +68,18 @@ const handlePostOffer = async (
     const parsedAttributes = JSON.parse(attributes);
     const { schemaId } = req.params;
     const issuerId = getIssuerID(res.locals.user.token);
-    const qrData = await createClaimOffer(
+    const { qrBuffer, qrCode } = await createClaimOffer(
       issuerId,
       schemaId,
       parsedAttributes,
       res.locals.user.token
     );
-    await sendDeepLinkViaDiscord(discordId, qrData)
+    await sendDeepLinkViaDiscord(discordId, qrCode);
+    await sendImageViaDiscord(discordId, qrBuffer);
     res.setHeader("X-Refresh-Token", res.locals.user.token);
     res.json({
       success: true,
-      qrData: qrData,
+      qrData: qrCode,
     });
   } catch (err) {
     next(err);

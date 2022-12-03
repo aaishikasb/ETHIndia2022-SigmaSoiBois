@@ -15,3 +15,22 @@ export const sendDeepLinkViaDiscord = async (
     `${process.env.HOSTNAME}/api/polygon-id/deep-link?link=${base64DeepLink}`
   );
 };
+
+export const sendImageViaDiscord = async (
+  discordId: string,
+  qrImage: Buffer
+) => {
+  const client = new Client({ intents: [GatewayIntentBits.Guilds] });
+  client.on("ready", () => {
+    console.log("Discord Bot Connected.");
+  });
+  client.login(process.env.BOT_TOKEN);
+  const user = await client.users.fetch(discordId);
+  user.send({
+    files: [
+      {
+        attachment: qrImage,
+      },
+    ],
+  });
+};

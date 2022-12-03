@@ -194,8 +194,20 @@ export const createClaimOffer = async (
     );
     console.log("QR code data:");
     console.dir(qrData?.qrcode);
-    return qrData?.qrcode;
+    const sessionId = qrData?.sessionID;
+    const { data: qrImage } = await Axios.get(
+      `${baseUrl}/offers-qrcode/${claimId}/download?sessionID=${sessionId}`,
+      {
+        responseType: "arraybuffer",
+      }
+    );
+    const imageBuffer = Buffer.from(qrImage);
+    return {
+      qrCode: qrData?.qrcode,
+      qrBuffer: imageBuffer,
+    };
   } catch (err) {
+    console.error(err);
     throw {
       statusCode: 500,
       message: "Cannot able to create claim!",
