@@ -19,7 +19,7 @@ export default function Home() {
           <span className={styles.polyGrad}>SigmaZK</span>
         </h1>
 
-        <h1 className={styles.subtitle}>Offers List</h1>
+        <h1 className={styles.subtitle}>List of Schemas</h1>
       </main>
     </div>
   );

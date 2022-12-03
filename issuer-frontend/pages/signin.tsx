@@ -1,14 +1,21 @@
 import Head from "next/head";
 import Image from "next/image";
-import { signUpUser } from "../services/api";
+import { useRouter } from "next/router";
+import { signInUser } from "../services/api";
 import styles from "../styles/Home.module.css";
 
 export default function Home() {
+  const router = useRouter();
   const submitHandler = async (event: Event) => {
     event.preventDefault();
     const email = event.target?.email?.value;
     const password = event.target?.password?.value;
-    await signUpUser(email, password);
+    const result = await signInUser(email, password);
+    if (result) {
+      router.push("/dashboard");
+    } else {
+      router.push("/signin");
+    }
   };
   return (
     <div className={styles.container}>

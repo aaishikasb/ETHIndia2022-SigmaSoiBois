@@ -1,8 +1,23 @@
 import Head from "next/head";
 import Image from "next/image";
+import { useRouter } from "next/router";
+import { signUpUser } from "../services/api";
+
 import styles from "../styles/Home.module.css";
 
 export default function Home() {
+  const router = useRouter();
+  const submitHandler = async (event: Event) => {
+    event.preventDefault();
+    const email = event.target?.email?.value;
+    const password = event.target?.password?.value;
+    const result = await signUpUser(email, password);
+    if (result) {
+      router.push("/signin");
+    } else {
+      router.push("/signup");
+    }
+  };
   return (
     <div className={styles.container}>
       <Head>
@@ -21,7 +36,7 @@ export default function Home() {
 
         <h1 className={styles.subtitle}>Sign Up</h1>
 
-        <form className={styles.form} action="/send-data-here" method="post">
+        <form className={styles.form} onSubmit={submitHandler}>
           <label className={styles.label} htmlFor="email">
             Email Address:
           </label>
@@ -33,15 +48,15 @@ export default function Home() {
             name="email"
           />
           <br />
-          <label className={styles.label} htmlFor="pass">
+          <label className={styles.label} htmlFor="password">
             Password:
           </label>
           <br />
           <input
             className={styles.inputBox}
             type="password"
-            id="last"
-            name="past"
+            id="password"
+            name="password"
           />
           <br />
           <button className={styles.submit} type="submit">
