@@ -16,17 +16,17 @@ export default function Home() {
           <span className={styles.polyGrad}>SigmaZK</span>
         </h1>
 
-        <h1 className={styles.subtitle}>Sign In</h1>
+        <h1 className={styles.subtitle}>Sign Up</h1>
 
         <form className={styles.form} action="/send-data-here" method="post">
             <label className={styles.label} for="email">Email Address:</label><br/>
             <input className={styles.inputBox} type="text" id="email" name="email" /><br/>
             <label className={styles.label} for="pass">Password:</label><br/>
             <input className={styles.inputBox} type="pass" id="last" name="past" /><br/>
-            <button className={styles.submit} type="submit">Let's go! 🚀</button>
+            <button className={styles.submit} type="submit">Let's register! 🚀</button>
         </form>
 
-        <label>Don't have an account? <a className={styles.link} href="/signup">Sign up!</a></label>
+        <label>Have an account already? <a className={styles.link} href="/signin">Sign in</a>!</label>
       </main>
 
       <footer className={styles.footer}>

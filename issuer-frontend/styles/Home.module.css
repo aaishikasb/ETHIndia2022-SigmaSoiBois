@@ -180,3 +180,7 @@
 .label {
   font-size: 1.3rem;
 }
+
+.link {
+  text-decoration: underline;
+}
