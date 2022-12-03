@@ -6,21 +6,21 @@ export default function Home() {
   return (
     <div className={styles.container}>
       <Head>
-        <title>Polygon ID<>Collab.Land</></title>
+        <title>Polygon ID - Collab.Land</title>
         <meta name="description" content="Polygon ID integration with Collab.Land" />
         <link rel="icon" href="/favicon.ico" />
       </Head>
 
       <main className={styles.main}>
         <h1 className={styles.title}>
-          Welcome to Polygon ID integration wtih Collab.Land Demo!
+          Welcome to <span className={styles.polyGrad}>Polygon ID</span> integration with <span className={styles.collabYellow}>Collab.</span><span className={styles.collabGrey}>Land</span> Demo!
         </h1>
 
         <p className={styles.description}>
-          1. Get started by creating a organiztion<br />
-          2. Definging a Schema for your Verifiable Credentia<br />
-          3. Issuing a claim for a Verifiable Credential to a user<br />
-          4. User Claims the verifiable credential<br />
+          1. Get started by creating an organiztion.<br />
+          2. Defining a Schema for your Verifiable Credential.<br />
+          3. Issuing a Claim for a Verifiable Credential to a user.<br />
+          4. User Claims the verifiable credential!<br />
         </p>
       </main>
 

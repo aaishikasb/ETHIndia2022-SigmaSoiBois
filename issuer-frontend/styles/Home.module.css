@@ -127,3 +127,17 @@
     filter: invert(1);
   }
 }
+
+.polyGrad {
+  background: -webkit-linear-gradient(1800deg, #8247e5, #ee62b5);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+.collabYellow {
+  color: #fea929;
+}
+
+.collabGrey {
+  color: #6a7870;
+}
