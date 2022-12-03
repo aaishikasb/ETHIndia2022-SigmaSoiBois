@@ -116,13 +116,16 @@
 }
 
 @media (prefers-color-scheme: dark) {
+
   .card,
   .footer {
     border-color: #222;
   }
+
   .code {
     background: #111;
   }
+
   .logo img {
     filter: invert(1);
   }
@@ -140,4 +143,40 @@
 
 .collabGrey {
   color: #6a7870;
+}
+
+.subtitle {
+  margin: 0.5rem 0;
+  line-height: 1.15;
+  font-size: 2.3rem;
+  text-align: center;
+  font-weight: 500;
+}
+
+.inputBox {
+  margin: 0.5rem 0;
+  width: 100%;
+  padding: 0.5rem;
+  font-size: 1rem;
+  border-radius: 0.25rem;
+  background: #eaeaea;
+  color: #111;
+}
+
+.form {
+  width: 30%;
+}
+
+.submit {
+  margin: 0.5rem 0;
+  width: 100%;
+  padding: 0.5rem;
+  font-size: 1.5rem;
+  border-radius: 0.25rem;
+  background: #8247e5;
+  font-weight: 600;
+}
+
+.label {
+  font-size: 1.3rem;
 }
