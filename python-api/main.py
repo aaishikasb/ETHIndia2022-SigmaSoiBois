@@ -9,7 +9,7 @@ import time
 API_KEY = os.getenv("API_KEY")
 HEADER = {"x-dune-api-key" : API_KEY}
 
-# Example Query ID - 638435
+# Example Query ID 
 QUERY_ID = "your_query_ID"
 
 BASE_URL = "https://api.dune.com/api/v1/"
