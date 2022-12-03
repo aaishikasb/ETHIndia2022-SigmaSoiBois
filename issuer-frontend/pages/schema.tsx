@@ -1,8 +1,25 @@
 import Head from "next/head";
 import Image from "next/image";
+import { useRouter } from "next/router";
+import { createSchema, signInUser } from "../services/api";
 import styles from "../styles/Home.module.css";
 
 export default function Home() {
+  const router = useRouter();
+
+  const submitHandler = async (event: Event) => {
+    event.preventDefault();
+    const schema = event.target?.schema?.value;
+    const mandatoryExpiration = event.target?.mandatoryExpiration?.value;
+    const attributes = event.target?.attributes?.value;
+    console.log(schema, mandatoryExpiration, attributes);
+    const result = await createSchema(schema, mandatoryExpiration, attributes);
+    if (result) {
+      router.push("/list");
+    } else {
+      router.push("/schema");
+    }
+  };
   return (
     <div className={styles.container}>
       <Head>
@@ -21,38 +38,37 @@ export default function Home() {
 
         <h1 className={styles.subtitle}>Create Schema</h1>
 
-        <form className={styles.form} action="/send-data-here" method="post">
-          <label className={styles.label} htmlFor="name">
+        <form className={styles.form} onSubmit={submitHandler}>
+          <label className={styles.label} htmlFor="schema">
             Name:
           </label>
           <br />
           <input
             className={styles.inputBox}
             type="text"
-            id="name"
-            name="name"
+            id="schema"
+            name="schema"
           />
           <br />
-          <label className={styles.label} htmlFor="expiry">
+          <label className={styles.label} htmlFor="mandatoryExpiration">
             Mandatory Expiry:
           </label>
           <br />
           <input
             className={styles.inputBox}
             type="text"
-            id="expiry"
-            name="expiry"
+            id="mandatoryExpiration"
+            name="mandatoryExpiration"
           />
           <br />
-          <label className={styles.label} htmlFor="atribs">
+          <label className={styles.label} htmlFor="attributes">
             Attributes:
           </label>
           <br />
-          <input
+          <textarea
             className={styles.inputBox}
-            type="text"
-            id="atribs"
-            name="atribs"
+            id="attributes"
+            name="attributes"
           />
           <br />
           <button className={styles.submit} type="submit">
