@@ -184,3 +184,13 @@
 .link {
   text-decoration: underline;
 }
+
+.submit {
+  margin: 0.5rem 0;
+  width: 30%;
+  padding: 0.5rem;
+  font-size: 1.5rem;
+  border-radius: 0.25rem;
+  background: #8247e5;
+  font-weight: 600;
+}

@@ -6,7 +6,7 @@ export default function Home() {
   return (
     <div className={styles.container}>
       <Head>
-        <title>Polygon ID - Collab.Land</title>
+        <title>SigmaZK</title>
         <meta name="description" content="Polygon ID integration with Collab.Land" />
         <link rel="icon" href="/favicon.ico" />
       </Head>
