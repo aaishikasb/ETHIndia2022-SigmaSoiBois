@@ -11,8 +11,7 @@
 <br>
 Proof of Work in a Zero knowledge way</b>
 </p>
-<blockquote align="center"> q
-  built on <span style="color: #8b0000;">☕</span> at <a href="https://ethindia.co/">ETHIndia</a>.
+<blockquote align="center">built on <span style="color: #8b0000;">☕</span> at <a href="https://ethindia.co/">ETHIndia</a>.
 
 </blockquote>
 
@@ -47,6 +46,9 @@ Proof of Work in a Zero knowledge way</b>
 <div align="center">
   <img alt="Preview Images" src="Assests/preview4.png" />
 </div>
+
+# Mobile Application 
+
 <div align="center">
   <img alt="Preview Images" src="Assests/preview5.png" />
 </div>
