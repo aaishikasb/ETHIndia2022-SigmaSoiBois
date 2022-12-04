@@ -107,3 +107,39 @@ export const listAllSchema = async () => {
     return [];
   }
 };
+
+export const createOffer = async (
+  schemaId: string,
+  discordId: string,
+  attributes: string
+) => {
+  try {
+    const token = localStorage.getItem("token");
+    const { data, headers } = await Axios.post(
+      `${process.env.NEXT_PUBLIC_API_URL}/api/schema/offer/${schemaId}`,
+      {
+        schemaId: schemaId,
+        discordId: discordId,
+        attributes: attributes,
+      },
+      {
+        headers: {
+          Authorization: `Bearer ${token}`,
+        },
+      }
+    );
+    console.dir(data);
+    if (data?.success) {
+      localStorage.setItem(
+        "token",
+        (headers as any).toJSON(true)["x-refresh-token"]
+      );
+      toast.success("Offer has been generated and sent to user!");
+      return true;
+    }
+  } catch (err) {
+    toast.error("Offer creation failed, retry again!");
+    console.error(err);
+    return false;
+  }
+};
