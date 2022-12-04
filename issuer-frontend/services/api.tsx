@@ -62,12 +62,17 @@ export const createSchema = async (
       {
         headers: {
           Authorization: `Bearer ${token}`,
+          "Access-Control-Expose-Headers": "X-Refresh-Token",
         },
       }
     );
     console.dir(data);
+    console.dir((headers as any).toJSON(true));
     if (data?.success) {
-      localStorage.setItem("token", (headers as any)?.["X-Refresh-Token"]);
+      localStorage.setItem(
+        "token",
+        (headers as any).get("x-refresh-token", true)
+      );
       toast.success(data?.message);
       return true;
     }
