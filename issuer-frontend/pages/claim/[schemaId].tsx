@@ -17,7 +17,7 @@ export default function Home() {
     const attributes = JSON.stringify([
       {
         attributeKey: "Role",
-        attributeValue: Role,
+        attributeValue: parseInt(Role),
       },
       {
         attributeKey: "ContributionNumber",
