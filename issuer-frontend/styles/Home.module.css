@@ -212,10 +212,10 @@
 }
 
 .cardTitle {
-    margin: 0.5rem 0;
-    line-height: 1.15;
-    font-size: 1.25rem;
-    font-weight: 600;
+  margin: 0.5rem 0;
+  line-height: 1.15;
+  font-size: 1.25rem;
+  font-weight: 600;
 }
 
 .cardEntry {
@@ -227,7 +227,7 @@
 
 .cardDiv {
   margin: 0.5rem 0rem;
-  padding: 1.5rem !important;
+  padding: 1rem !important;
   border-style: groove;
   width: 100%;
 }

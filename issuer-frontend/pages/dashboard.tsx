@@ -27,7 +27,7 @@ export default function Home() {
         </a>
         <br />
         <br />
-        <a className={styles.buttonlink} href="/claim">
+        <a className={styles.buttonlink} href="/list">
           <button className={styles.submit2} type="submit">
             Offer Claim 🏆
           </button>
