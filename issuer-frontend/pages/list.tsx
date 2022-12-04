@@ -9,7 +9,6 @@ export default function Home() {
   const [schemas, setSchemas] = useState([]);
   const fetchSchemas = async () => {
     const schemasFromAPI = await listAllSchema();
-    console.dir(schemas);
     setSchemas(schemasFromAPI);
   };
   useEffect(() => {
@@ -33,6 +32,7 @@ export default function Home() {
 
         <h1 className={styles.subtitle}>List of Schemas</h1>
         {schemas.map((val: any, index) => {
+          console.log("val:", val);
           return (
             <ListObject schema={val?.schema} schemaId={val?.id} key={index} />
           );
