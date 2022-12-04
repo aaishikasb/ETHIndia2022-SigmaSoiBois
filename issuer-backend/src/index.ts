@@ -9,7 +9,11 @@ import schemaRouter from "./schema/schema.routes";
 
 dotenvConfig();
 
-app.use(cors())
+app.use(
+  cors({
+    exposedHeaders: "X-Refresh-Token",
+  })
+);
 app.use(express.json({}));
 
 app.use("/api/healthcheck", (req: Request, res: Response) => {
