@@ -66,7 +66,6 @@ export const createSchema = async (
       }
     );
     console.dir(data);
-    console.dir();
     if (data?.success) {
       localStorage.setItem(
         "token",
@@ -79,5 +78,32 @@ export const createSchema = async (
     toast.error("Schema creation failed, retry again!");
     console.error(err);
     return false;
+  }
+};
+
+export const listAllSchema = async () => {
+  try {
+    const token = localStorage.getItem("token");
+    const { data, headers } = await Axios.get(
+      `${process.env.NEXT_PUBLIC_API_URL}/api/schema/list`,
+      {
+        headers: {
+          Authorization: `Bearer ${token}`,
+        },
+      }
+    );
+    console.dir(data);
+    if (data?.success) {
+      localStorage.setItem(
+        "token",
+        (headers as any).toJSON(true)["x-refresh-token"]
+      );
+      toast.success("Schemas fetched successfully!");
+      return data?.allSchemas;
+    }
+  } catch (err) {
+    toast.error("Schema fetching failed, retry again!");
+    console.error(err);
+    return [];
   }
 };
