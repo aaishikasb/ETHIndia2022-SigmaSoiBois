@@ -227,7 +227,7 @@
 
 .cardDiv {
   margin: 0.5rem 0rem;
-  padding: 1.5rem;
+  padding: 1.5rem !important;
   border-style: groove;
-  width: 30%;
+  width: 30% !important;
 }
